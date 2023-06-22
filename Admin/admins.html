@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Personels</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/ongoing.css">
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <style>
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            max-width: 90%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #333;
+        }
+
+        button {
+            background-color: #004781;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            height: 20%;
+            width: 100%;
+        }
+
+        ion-icon {
+            font-size: 28px;
+            color: #001c33;
+        }
+
+        button:hover {
+            background-color: #002c46;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            box-shadow: 0 0 6px rgba(81, 203, 238, 0.8);
+        }
+
+        h1 {
+            margin-top: 40px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-light navbar-light">
+                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                    <img src="img/LogoMIS.png" alt="" style="height: 100px; width: 150px;">
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+
+                    </div>
+
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="home.html" class="nav-item nav-link active"><i
+                            class="fa fa-tachometer-alt me-2"></i>Home</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                                class="fa fa-paper-plane"></i>Request</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="ongoing.html" class="dropdown-item">Pending</a>
+                            <a href="accepted.html" class="dropdown-item">Accepted</a>
+                            <a href="finnished.html" class="dropdown-item">Completed</a>
+                        </div>
+                    </div>
+                    <a href="services.html" class="nav-item nav-link"><i class="fa fa-wrench"
+                            aria-hidden="true"></i>Services</a>
+                    <a href="personels.html" class="nav-item nav-link"><i class="fa fa-user me-2"></i>MIS Personels</a>
+                    <a href="admins.html" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Admins</a>
+                    <a href="reports.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Reports</a>
+
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars" style="color:  #015871;"></i>
+                </a>
+
+                <div class="navbar-nav align-items-center ms-auto">
+
+                    <div class="nav-item dropdown">
+
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Profile updated</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">New user added</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Password changed</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="img/BipsuLogo.png" alt=""
+                                style="width: 40px; height: 40px;">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" id="sign-out-button" class="dropdown-item">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+            <div class="container">
+                <h1>Admins</h1>
+                <ion-icon name="add-outline" id="openModal"></ion-icon>
+
+                <div id="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Admin</h2>
+                        <form id="adminForm">
+                            <input type="text" id="fullname" placeholder="Full Name" required>
+                            <select name="" id="position">
+                                <option value="">Position</option>
+                                <option value="Technician I">Technician I</option>
+                                <option value="Technician II">Technician II</option>
+                            </select>
+                            <input type="email" id="email" placeholder="Email" required>
+                            <input type="password" id="password" placeholder="Password" required>
+                            <button type="submit">Register</button>
+                        </form>
+                    </div>
+                </div>
+
+
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Position</th>
+                            <th>Status</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                    </tbody>
+                </table>
+            </div>
+
+
+            <!-- Footer Start -->
+
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <script>
+        var firebaseConfig = {
+
+            apiKey: "AIzaSyAxFXfzIF5Ra6CjIG_qUWggs4Cr6JHRvbo",
+            authDomain: "mis-ofiice.firebaseapp.com",
+            databaseURL: "https://mis-ofiice-default-rtdb.firebaseio.com/",
+            projectId: "mis-ofiice",
+            storageBucket: "mis-ofiice.appspot.com",
+            messagingSenderId: "1076425031100",
+            appId: "1:1076425031100:web:94f79973a18b691be03fb9"
+
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        const firestore = firebase.firestore();
+        const form = document.getElementById('adminForm');
+        const fullname = document.getElementById('fullname');
+        const position = document.getElementById('position');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const db = firebase.firestore();
+        const tableBody = document.getElementById('table-body');
+        const auth = firebase.auth();
+        let user = null; // Initialize user variable
+
+
+        // Retrieve data from the "admins" collection
+        db.collection('admins').get().then((snapshot) => {
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                const FullName = data.FullName;
+                const Email = data.Email;
+                const Password = data.Password;
+                const Position = data.Position;
+                const status = data.status;
+
+                // Create a table row and populate it with the data
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                                <td>${FullName}</td>
+                                <td>${Email}</td>
+                                <td>${Password}</td>
+                                <td>${Position}</td>
+                                <td class="status-cell">${status}</td>
+                                `;
+
+                // Append the row to the table body
+                tableBody.appendChild(row);
+
+                updateStatusCell(auth.currentUser, row);
+
+                // Listen for auth state changes to determine online/offline status
+                auth.onAuthStateChanged((user) => {
+                    updateStatusCell(user, row);
+                });
+            });
+        }).catch((error) => {
+            console.error('Error getting data from Firestore: ', error);
+        });
+
+        // Update the status cell based on the authentication state
+        function updateStatusCell(user, row) {
+            const statusCell = row.querySelector('.status-cell');
+            const emailCell = row.querySelector('td:nth-child(2)').textContent;
+
+            if (user && user.email === emailCell) {
+                // Admin is signed in (online)
+                statusCell.textContent = 'Online';
+                statusCell.style.color = 'green';
+            } else {
+                // Admin is signed out (offline)
+                statusCell.textContent = 'Offline';
+                statusCell.style.color = 'red';
+            }
+        }
+
+        // Add sign up event
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Get email and password values
+            const fullnameValue = fullname.value;
+            const positionValue = position.value;
+            const emailValue = email.value;
+            const passwordValue = password.value;
+
+            // Validate form data
+            if (fullnameValue === '' || positionValue === '' || emailValue === '' || passwordValue === '') {
+                alert('Please fill in all the required fields.');
+                return;
+            }
+
+            // Sign up user
+            firebase.auth()
+                .createUserWithEmailAndPassword(emailValue, passwordValue)
+                .then((user) => {
+                    // Add user data to Firestore
+                    firestore.collection('admins')
+                        .doc(user.user.uid)
+                        .set({
+                            FullName: fullnameValue,
+                            Position: positionValue,
+                            Email: emailValue,
+                            Password: passwordValue
+                        })
+                        .then(() => {
+                            // Redirect to dashboard
+                            alert('New Admin Account has been created');
+                            window.location = 'admins.html';
+                        })
+                        .catch((error) => {
+                            // Show error message
+                            alert(error.message);
+                        });
+                })
+                .catch((error) => {
+                    // Show error message
+                    alert(error.message);
+                });
+        });
+
+
+
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // User is signed in
+                console.log("User is signed in:");
+
+            } else {
+                // No user is signed in, prompt the sign-in page
+                window.location.href = "index.html";
+            }
+        });
+
+        document.getElementById('sign-out-button').addEventListener('click', signOut);
+        function signOut() {
+            firebase.auth().signOut().then(() => {
+                // Sign-out successful.
+                console.log("Sign-out successful.");
+                alert("Sign-out successful");
+                window.location.href = "index.html";
+            }).catch((error) => {
+                // An error happened.
+                console.log("An error happened.");
+                alert("An error happened");
+            });
+        }
+
+
+
+
+        // Get the modal element
+        var modal = document.getElementById("modal");
+
+        // Get the button that opens the modal
+        var openModalBtn = document.getElementById("openModal");
+
+        // Get the <span> element that closes the modal
+        var closeBtn = document.getElementsByClassName("close")[0];
+
+        // Open the modal
+        openModalBtn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // Close the modal when the user clicks on <span> (x)
+        closeBtn.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // Close the modal when the user clicks outside of it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+
+    </script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

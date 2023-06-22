@@ -1,0 +1,66 @@
+a{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+}
+.services{
+   
+    height:300px;
+}
+
+
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    color:rgb(0, 26, 56);
+    font-size:small;
+    position: relative;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 40px;
+    padding-top: 50px;
+
+}
+
+h2{
+    text-align: center;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+   
+}
+.card {
+    width: 8rem;
+    height: 10rem;
+    background-color: #00303bf0;
+    border-radius: 1rem;
+  
+    transition: all 0.4s ease-in;
+    box-shadow: 0.4rem 0.4rem 0.6rem #00000040;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 10px;
+    }
+.card h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:10px;
+    color: white;
+   
+}
+
+.card:hover {
+    transform: translateY(-1.5rem);
+    border: #fffffff0 0.2em solid;
+    border-radius: 2.5rem 0 2.5rem 0;
+    }
+
+    ion-icon{
+        font-size:60px;
+        color: white;
+        
+    }

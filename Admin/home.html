@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/home.css">
+
+    <style>
+        img {
+            height: 30%;
+            width: 30%;
+        }
+
+        .home {
+            height: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-light navbar-light">
+                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                    <img src="img/LogoMIS.png" alt="" style="height: 100px; width: 150px;">
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+
+                    </div>
+
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="home.html" class="nav-item nav-link active"><i
+                            class="fa fa-tachometer-alt me-2"></i>Home</a>
+
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                                class="fa fa-paper-plane"></i>Request</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="ongoing.html" class="dropdown-item">Pending</a>
+
+                            <a href="accepted.html" class="dropdown-item">Accepted</a>
+                            <a href="finnished.html" class="dropdown-item">Completed</a>
+                        </div>
+                    </div>
+                    <a href="services.html" class="nav-item nav-link"><i class="fa fa-wrench"
+                            aria-hidden="true"></i>Services</a>
+                    <a href="personels.html" class="nav-item nav-link"><i class="fa fa-user me-2"></i>MIS Personels</a>
+                    <a href="admins.html" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Admins</a>
+
+                    <a href="reports.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Reports</a>
+
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars" style="color: #015871;"></i>
+                </a>
+                <h1 style="font-size: medium;padding-bottom: 10px;" id="ongoing-count-heading">Pending Requests <span
+                        id="ongoing-count">0</span><span><a href="ongoing.html"><ion-icon
+                                name="arrow-forward-circle-outline"
+                                style="margin-left: 10px;font-size: medium;"></ion-icon></a></span></h1>
+                <div class="navbar-nav align-items-center ms-auto">
+
+                    <div class="nav-item dropdown">
+
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Profile updated</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">New user added</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Password changed</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="img/BipsuLogo.png" alt=""
+                                style="width: 40px; height: 40px;">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+
+                            <a href="#" class="dropdown-item" id="sign-out-button">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+
+            <div class="home">
+                <h1>A D M I N</h1>
+                <div id="clock">
+                </div>
+                <div id="date">
+
+                </div>
+
+
+                <div class="container">
+
+                    <img src="img/BipsuLogo.png" alt="">
+                    <img src="img/LogoMIS.png" alt="">
+
+                </div>
+
+
+            </div>
+
+
+            <!-- Footer Start -->
+
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+
+    </div>
+
+    <script>
+
+        var firebaseConfig = {
+
+            apiKey: "AIzaSyAxFXfzIF5Ra6CjIG_qUWggs4Cr6JHRvbo",
+            authDomain: "mis-ofiice.firebaseapp.com",
+            databaseURL: "https://mis-ofiice-default-rtdb.firebaseio.com",
+            projectId: "mis-ofiice",
+            storageBucket: "mis-ofiice.appspot.com",
+            messagingSenderId: "1076425031100",
+            appId: "1:1076425031100:web:94f79973a18b691be03fb9"
+
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        const firestore = firebase.firestore();
+        const usersRef = firestore.collection('users');
+        const ongoingCountSpan = document.getElementById('ongoing-count');
+        const ongoingCountHeading = document.getElementById('ongoing-count-heading');
+
+        let ongoingCount = 0; // Variable to keep track of ongoing count
+
+        usersRef.get().then((usersSnapshot) => {
+            usersSnapshot.forEach((userDoc) => {
+                const requestsRef = usersRef.doc(userDoc.id).collection('requests');
+                requestsRef.get().then((requestsSnapshot) => {
+                    requestsSnapshot.forEach((requestDoc) => {
+                        const status = requestDoc.data().status;
+                        if (status === 'Pending') {
+                            ongoingCount++; // Increment the ongoing count
+                        }
+                    });
+
+                    // Update the ongoing count in the span
+                    ongoingCountSpan.textContent = ongoingCount.toString();
+
+                    // Change the color if count is greater than 0
+                    if (ongoingCount > 0) {
+                        ongoingCountHeading.style.color = 'red';
+                    }
+                });
+            });
+        });
+
+
+        document.getElementById('sign-out-button').addEventListener('click', signOut);
+        function signOut() {
+            firebase.auth().signOut().then(() => {
+                // Sign-out successful.
+                console.log("Sign-out successful.");
+                alert("Sign-out successful");
+                window.location.href = "index.html";
+            }).catch((error) => {
+                // An error happened.
+                console.log("An error happened.");
+                alert("An error happened");
+            });
+        }
+
+
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // User is signed in
+                console.log("User is signed in:");
+
+            } else {
+                // No user is signed in, prompt the sign-in page
+                window.location.href = "index.html";
+            }
+        });
+
+
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+
+            var timeString = hours + ':' + minutes + ':' + ampm;
+            var dateString = now.toDateString();
+
+            document.getElementById('clock').textContent = timeString;
+            document.getElementById('date').textContent = dateString;
+        }
+        setInterval(updateClock, 1000);
+
+
+    </script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

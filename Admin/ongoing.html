@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Personels</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-auth.js"></script>
+
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Template Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/ongoing.css">
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</head>
+
+<body>
+  <div class="container-xxl position-relative bg-white d-flex p-0">
+    <!-- Spinner Start -->
+
+    <!-- Spinner End -->
+
+
+    <!-- Sidebar Start -->
+    <div class="sidebar pe-4 pb-3">
+      <nav class="navbar bg-light navbar-light">
+        <a href="index.html" class="navbar-brand mx-4 mb-3">
+          <img src="img/LogoMIS.png" alt="" style="height: 100px; width: 150px;">
+        </a>
+        <div class="d-flex align-items-center ms-4 mb-4">
+          <div class="position-relative">
+
+          </div>
+
+        </div>
+        <div class="navbar-nav w-100">
+          <a href="home.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Home</a>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                class="fa fa-paper-plane"></i>Request</a>
+            <div class="dropdown-menu bg-transparent border-0">
+              <a href="ongoing.html" class="dropdown-item">Pending</a>
+              <a href="accepted.html" class="dropdown-item">Accepted</a>
+              <a href="finnished.html" class="dropdown-item">Completed</a>
+            </div>
+          </div>
+          <a href="services.html" class="nav-item nav-link"><i class="fa fa-wrench" aria-hidden="true"></i>Services</a>
+          <a href="personels.html" class="nav-item nav-link"><i class="fa fa-user me-2"></i>MIS Personels</a>
+          <a href="admins.html" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Admins</a>
+          <a href="reports.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Reports</a>
+
+        </div>
+      </nav>
+    </div>
+    <!-- Sidebar End -->
+
+
+    <!-- Content Start -->
+    <div class="content">
+      <!-- Navbar Start -->
+      <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+
+        <a href="#" class="sidebar-toggler flex-shrink-0">
+          <i class="fa fa-bars" style="color:  #015871;"></i>
+        </a>
+
+        <div class="navbar-nav align-items-center ms-auto">
+
+          <div class="nav-item dropdown">
+
+            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+              <a href="#" class="dropdown-item">
+                <h6 class="fw-normal mb-0">Profile updated</h6>
+                <small>15 minutes ago</small>
+              </a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item">
+                <h6 class="fw-normal mb-0">New user added</h6>
+                <small>15 minutes ago</small>
+              </a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item">
+                <h6 class="fw-normal mb-0">Password changed</h6>
+                <small>15 minutes ago</small>
+              </a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item text-center">See all notifications</a>
+            </div>
+          </div>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+              <img class="rounded-circle me-lg-2" src="img/BipsuLogo.png" alt="" style="width: 40px; height: 40px;">
+            </a>
+            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+              <a href="#" id="sign-out-button" class="dropdown-item">Log Out</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- Navbar End -->
+      <div class="container">
+        <table id="data-table">
+          <h1>Pending Requests</h1>
+          <thead>
+            <tr>
+              <th>Requesting Office</th>
+              <th>Requesting Personel</th>
+              <th>Services</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+          </tbody>
+        </table>
+
+
+      </div>
+
+      <!-- Footer Start -->
+
+      <!-- Footer End -->
+    </div>
+    <!-- Content End -->
+
+    <script>
+      // Initialize Firebase
+      const firebaseConfig = {
+        // your firebase configuration
+        apiKey: "AIzaSyAxFXfzIF5Ra6CjIG_qUWggs4Cr6JHRvbo",
+        authDomain: "mis-ofiice.firebaseapp.com",
+        databaseURL: "https://mis-ofiice-default-rtdb.firebaseio.com",
+        projectId: "mis-ofiice",
+        storageBucket: "mis-ofiice.appspot.com",
+        messagingSenderId: "1076425031100",
+        appId: "1:1076425031100:web:94f79973a18b691be03fb9"
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      const tableBody = document.getElementById('table-body');
+      const firestore = firebase.firestore();
+      const usersRef = firestore.collection('users');
+
+      usersRef.get().then((usersSnapshot) => {
+        usersSnapshot.forEach((userDoc) => {
+          const requestsRef = usersRef.doc(userDoc.id).collection('requests');
+          requestsRef.get().then((requestsSnapshot) => {
+            requestsSnapshot.forEach((requestDoc) => {
+              const status = requestDoc.data().status;
+              if (status === 'Pending') {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                      <td>${requestDoc.data().requestingOffice}</td>
+                      <td>${requestDoc.data().requestingPersonel}</td>
+                      <td>${requestDoc.data().services}</td>
+                      <td>${requestDoc.data().date}</td>
+                      <td>${status}</td>
+                      <td>
+                        <button class="accept-btn">Accept</button>
+                      </td>
+                    `;
+
+                // Add an event listener to the "Accept" button
+                const acceptBtn = row.querySelector('.accept-btn');
+                acceptBtn.addEventListener('click', () => {
+                  // Get the UID of the admin who is currently signed in
+                  const currentUser = firebase.auth().currentUser;
+                  const adminId = currentUser.uid;
+
+                  // Retrieve the MISPersonel data from Firestore for the corresponding admin
+                  const adminsRef = firestore.collection('admins');
+                  adminsRef.doc(adminId).get().then((adminDoc) => {
+                    if (adminDoc.exists) {
+                      const misPersonelData = adminDoc.data().FullName;
+
+                      // Update the status data and MISPersonel data in Firestore to "Accepted" and the admin's MISPersonel data
+                      requestsRef.doc(requestDoc.id).update({
+                        status: 'Accepted',
+                        MISPersonel: misPersonelData
+                      }).then(() => {
+                        console.log('Status and MISPersonel updated successfully!');
+                        alert("Request is Accepted");
+                        window.location.href = "ongoing.html";
+                      }).catch((error) => {
+                        console.error('Error updating status and MISPersonel: ', error);
+                        alert("Error request was not accepted");
+                      });
+                    } else {
+                      console.error('Admin document does not exist');
+                      alert("Error: Admin document does not exist");
+                    }
+                  }).catch((error) => {
+                    console.error('Error retrieving admin document: ', error);
+                    alert("Error: Failed to retrieve admin document");
+                  });
+                });
+
+
+                tableBody.appendChild(row);
+              }
+            });
+          });
+        });
+      });
+
+
+      firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          // User is signed in
+          console.log("User is signed in:");
+
+        } else {
+          // No user is signed in, prompt the sign-in page
+          window.location.href = "index.html";
+        }
+      });
+
+      document.getElementById('sign-out-button').addEventListener('click', signOut);
+      function signOut() {
+        firebase.auth().signOut().then(() => {
+          // Sign-out successful.
+          console.log("Sign-out successful.");
+          alert("Sign-out successful");
+          window.location.href = "index.html";
+        }).catch((error) => {
+          // An error happened.
+          console.log("An error happened.");
+          alert("An error happened");
+        });
+      }
+
+
+    </script>
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+  </div>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/chart/chart.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/tempusdominus/js/moment.min.js"></script>
+  <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+  <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>

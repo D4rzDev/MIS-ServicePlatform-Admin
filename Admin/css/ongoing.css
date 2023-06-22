@@ -1,0 +1,57 @@
+.container{
+    height: 100%;
+}
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    text-align: center;
+    margin-top: 20px;
+   
+}
+a{
+font-family: Arial, Helvetica, sans-serif;
+font-size: small;
+}
+th{
+font-family: Arial, Helvetica, sans-serif;
+font-size: small;
+color: #00232c;
+}
+td{
+font-family: Arial, Helvetica, sans-serif;
+font-size: smaller;
+color: #002029;
+}
+ion-icon{
+color: white;
+}
+
+
+button{
+background-color: #002029;
+border-radius: 5px;
+}
+
+table {
+border-collapse: collapse;
+width: 100%;
+margin-top:20px;
+}
+
+th, td {
+padding: 8px;
+text-align: left;
+border-bottom: 1px solid #ddd;
+}
+
+th {
+background-color: #f2f2f2;
+}
+
+.accept-btn{
+background-color: white;
+border-radius: 10px;
+border-color: #002029;
+color: #002029;
+}

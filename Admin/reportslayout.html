@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        /* Style for the modal */
+        .modal {
+            display: none;
+            position: fixed;
+
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+
+        }
+
+        /* Style for the modal content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+
+        }
+
+        /* Style for the close button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 600px) {
+            .modal-content {
+
+                width: 90%;
+            }
+        }
+
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 15%;
+            height: 15%;
+        }
+
+        h1 {
+            color: black;
+            font-size: 8px;
+            text-align: center;
+        }
+
+        h2 {
+            color: black;
+            font-size: 8px;
+            text-align: center;
+        }
+
+        h3 {
+            color: black;
+            font-size: 10px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 2px;
+        }
+
+        p {
+            color: black;
+            font-size: 6px;
+            text-align: center;
+        }
+
+        .sub1 {
+            color: black;
+            font-size: 6px;
+            display: flex;
+            justify-content: left;
+            align-items: start;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            height: 20%;
+        }
+
+        .class2 {
+            color: black;
+            font-size: 8px;
+        }
+
+        .services {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .subservices h1 {
+            font-size: 6px;
+            margin: 5px 0;
+            margin-left: 20px;
+        }
+
+        .services1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .servicereport {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .report {
+            margin-left: 20px;
+        }
+
+        .serviceassesment {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .client {
+
+            justify-content: left;
+
+        }
+
+        .release {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        @media print {
+
+            /* Hide the background */
+            body {
+                background: none;
+            }
+
+            /* Center the modal */
+            .modal {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 9999;
+                overflow: hidden;
+            }
+
+            /* Adjust the size of the modal content */
+            .modal-content {
+                width: 100%;
+                max-width: 800px;
+                /* Set a maximum width to prevent excessive stretching on larger screens */
+                margin: 0;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+                overflow: visible;
+                position: relative;
+            }
+
+            .printButton {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button id="openModal">Open Modal</button>
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="logo">
+                <img src="img/BipsuLogo.png" alt="">
+                <img src="img/LogoMIS.png" alt="">
+            </div>
+            <div class="header">
+                <h1>BILIRAN PROVINCE STATE UNIVERSITY</h1>
+                <h2>Naval,Biliran</h2>
+                <h3>MANAGEMENT INFORMATION SYSTEM OFFICE</h3>
+            </div>
+            <div class="form1">
+                <h1 style="background-color: #888;">FORM 1 REQUEST FOR ICT SERVIVES</h1>
+                <P>Instructions : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis
+                    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                    laborum</P>
+            </div>
+            <div class="class1">
+                <h1 style="background-color: #888;">1. REQUESTER INFORMATION</h1>
+                <div class="sub1">
+                    <label for="requesting-office">Requesting Office:</label><input type="text">
+                    <label for="requesting-office">College Unit:</label><input type="text">
+                </div>
+                <div class="sub1">
+                    <label for="requesting-office">Date:</label><input type="text">
+                    <label for="requesting-office">Time Received:</label><input type="text">
+                </div>
+                <div class="sub1">
+                    <label for="requesting-office">Receiving ICT Helpdesk Personel:</label><input type="text">
+                    <label for="requesting-office">Signature:</label><input type="text">
+                </div>
+                <div class="sub1">
+                    <label for="requesting-office">Item Received:</label><input type="text">
+                    <label for="requesting-office">Item Serial Numder:</label><input type="text">
+                </div>
+                <div class="sub1">
+                    <label for="requesting-office">Contact No:</label><input type="text">
+                    <label for="requesting-office">Due On:</label><input type="text">
+                </div>
+                <div class="sub1">
+                    <label for="requesting-office">Standing Que(Specify Number):</label><input type="text">
+
+                </div>
+            </div>
+            <div class="class2">
+                <h1 style="background-color: #888;">2. ICT SERVICES REQUESTED</h1>
+
+                <label for="requesting-office">Description of the Problem(Optional):</label><input type="text"
+                    style="width: 100%;">
+                <label for="requesting-office">Service Requested:</label><input type="text" style="width: 100%;">
+
+                <p style="text-align: left;">Recommended Solution:</p>
+
+                <div class="services">
+                    <div class="subservices">
+                        <h1 style="font-size: 8px;">Hardware Services</h1>
+                        <h1>Hardware Fix</h1>
+                        <h1>Hardware Assembly</h1>
+                        <h1>Scanning</h1>
+                        <h1>Printing</h1>
+                        <h1>Network Installation</h1>
+                        <h1>Photocopying</h1>
+                    </div>
+
+                    <div class="subservices">
+                        <h1 style="font-size: 8px;">Software Services</h1>
+                        <h1>Internet & Email</h1>
+                        <h1>Virus Removal</h1>
+                        <h1>Software Installation</h1>
+                        <h1>Enrollment Concerns</h1>
+                        <h1>Reformatting</h1>
+                        <h1>Forms/Download</h1>
+                        <h1>Classroom Support</h1>
+                        <h1>Software Development</h1>
+                    </div>
+
+                    <div class="subservices">
+                        <h1 style="font-size: 8px;">Consulting Services</h1>
+                        <h1>Hardware Specification</h1>
+                        <h1>Software Specification</h1>
+                        <h1>Troubleshooting</h1>
+                        <h1>Training Request</h1>
+                        <h1>Search for Data/Info</h1>
+                        <h1>Technical Advising</h1>
+
+                    </div>
+                </div>
+
+                <div class="services1">
+                    <div class="s1">
+                        <h1>Assigned ICT Personel :</h1>
+                        <input type="text">
+                    </div>
+                    <div class="s1">
+                        <h1>Expected Finish Date/Time :</h1>
+                        <input type="text">
+                    </div>
+                    <div class="s1">
+                        <h1>Endoresment :</h1>
+                        <input type="text">
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="servicesreport">
+                <h1 style="background-color: #888;">3.SERVICE REPORT</h1>
+                <div class="servicereport">
+
+                    <div class="report">
+                        <h1>Date of Accomplishedment of Service :</h1><input type="text">
+
+                        <h1>Findings</h1>
+                        <input type="checkbox" name="Accomplished" id="">
+                        <h1>Accomplished</h1>
+
+                    </div>
+
+                    <div class="report">
+                        <h1>Time:</h1><input type="text">
+                        <img src="" alt="">
+                        <input type="text">
+                        <h1>Signature of Servicing Staff</h1>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="assesment">
+                <h1 style="background-color: #888;">4.SERVICE ASSESMENT</h1>
+                <div class="serviceassesment">
+                    <h1>Date Received :</h1><input type="text">
+                    <h1>Time :</h1><input type="text">
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat.</p>
+                <div class="serviceassesment">
+                    <h1>Very Satisfied</h1><input type="checkbox" name="" id="">
+                    <h1>Satisfied</h1><input type="checkbox" name="" id="">
+                    <h1>Needs Improvement</h1><input type="checkbox" name="" id="">
+
+                </div>
+                <div class="remarks">
+                    <h1>Remarks :</h1><input type="text">
+                </div>
+
+                <div class="client">
+                    <input type="text" name="" id="">
+                    <h1>Signature Over Printed Name of the Client</h1>
+                </div>
+            </div>
+
+            <div class="equipment">
+                <h1 style="background-color: #888;">5. EQUIPMENT RELEASE</h1>
+
+                <div class="release">
+                    <h1>Name & Signature :</h1><input type="text">
+                    <h1>Date Received :</h1><input type="text">
+                    <h1>Remarks :</h1><input type="text">
+                </div>
+            </div>
+
+            <button onclick="printModalText()" id="printButton" class="printButton">Print</button>
+        </div>
+    </div>
+</body>
+
+<script>
+    // Get the modal element
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("openModal");
+
+    // Get the close button element
+    var closeBtn = document.getElementsByClassName("close")[0];
+
+    // Function to open the modal
+    function openModal() {
+        modal.style.display = "block";
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    // Event listener for the button click
+    btn.addEventListener("click", openModal);
+
+    // Event listener for the close button click
+    closeBtn.addEventListener("click", closeModal);
+
+    function printModalContent() {
+        // Open the print dialog
+        window.print();
+    }
+
+    // Call the printModalContent function when a button or link is clicked
+    // For example, if you have a button with id "printButton", you can attach a click event handler to it like this:
+    document.getElementById("printButton").addEventListener("click", printModalContent);
+
+
+</script>
+
+</html>

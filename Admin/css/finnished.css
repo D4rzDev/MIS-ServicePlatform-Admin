@@ -1,0 +1,78 @@
+.container {
+    height: 100%;
+}
+
+
+a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+}
+
+th {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    color: #00232c;
+}
+
+td {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    color: #002029;
+}
+
+ion-icon {
+    color: rgb(0, 209, 28);
+}
+
+
+button {
+    background-color: #002029;
+    border-radius: 5px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown a {
+    color: #002029;
+    font-size: smaller;
+}
